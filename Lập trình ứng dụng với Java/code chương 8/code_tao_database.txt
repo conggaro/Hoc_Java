@@ -1,0 +1,27 @@
+create table role (
+	role_id int(11) unsigned not null PRIMARY KEY AUTO_INCREMENT,
+    role_name text(255) not null
+);
+
+create table `user` (
+	user_id int(11) unsigned not null PRIMARY KEY AUTO_INCREMENT,
+    username text(255) not null,
+    `password` text(255) not null,
+    fullname text(255) not null,
+    date_of_birth timestamp not null DEFAULT CURRENT_TIMESTAMP() on UPDATE CURRENT_TIMESTAMP(),
+    email text(255) not null,
+    role int(11) unsigned not null
+);
+
+insert into role (role_id, role_name) VALUES
+(1000, 'Admin'),
+(1001, 'Manager'),
+(1002, 'Normal User'),
+(1003, 'Guest');
+
+insert into user(user_id, username, `password`, fullname, date_of_birth, email, role) VALUES
+(695105001, 'anhnv2000', '123456', N'Nguyễn Vân Anh', '2000-03-05 03:15:27', 'anhnv2000@gmail.com', 1000),
+(695105002, 'dattt1999', '123456', N'Trần Tiến Đạt', '1999-06-12 08:05:18', 'dattt1999@gmail.com', 1001),
+(695105003, 'dongvt2000', '123456', N'Vũ Tiến Đông', '2000-04-02 12:22:07', 'dongvt2000@gmail.com', 1002),
+(695105004, 'ngochm2000', '123456', N'Mai Hồng Ngọc', '2000-03-05 23:27:15', 'ngochm2000@gmail.com', 1003),
+(695105005, 'duongdv2000', '123456', N'Đặng Vũ Dương', '2000-03-05 05:02:9', 'duongdv2000@gmail.com', 1003);
